@@ -3,8 +3,6 @@ console.log("hi");
 //const humanSelection = getHumanChoice;
 //const computerSelection = getComputerChoice;
 function playGame() {
-  let humanSelection = getHumanChoice();
-  let computerSelection = getComputerChoice();
   let humanScore = 0;
   let computerScore = 0;
   function playRound(humanChoice, computerChoice) {
@@ -28,15 +26,17 @@ function playGame() {
       computerScore += 1;
       return "You Lose! scissor beats paper";
     } else if (computerChoice === humanChoice) {
-      computerScore += 1;
       return "DRAW!";
     }
+    //return "Invalid input,please try again!";
   }
   //call playround 5 times using for loop?(add loop in playRound instead?)
   for (let i = 0; i < 2; i++) {
-    playRound(humanSelection, computerSelection);
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
+    let result = playRound(humanSelection, computerSelection);
+    console.log(result);
   }
-  return humanSelection;
 }
 
 function getHumanChoice() {
@@ -61,7 +61,7 @@ function getHumanChoice() {
 //console.log(getHumanChoice());
 
 function getComputerChoice() {
-  let randomCpuChoice = ["rock", "paper", "scissors"];
+  let randomCpuChoice = ["rock", "paper", "scissor"];
   let computerChoice = Math.floor(Math.random() * randomCpuChoice.length);
   //add switch statement
   switch (computerChoice) {
@@ -78,4 +78,4 @@ function getComputerChoice() {
 }
 //console.log(getComputerChoice());
 //console.log(playRound(getHumanChoice(), getComputerChoice()));
-//console.log(playGame());
+playGame();

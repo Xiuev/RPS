@@ -1,10 +1,8 @@
-console.log("hi");
-
-//const humanSelection = getHumanChoice;
-//const computerSelection = getComputerChoice;
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
+  let totalHumanScore = 0;
+  let totalComputerScore = 0;
   function playRound(humanChoice, computerChoice) {
     //DONT FORGET TO INCREASE SCORE OF WINNER
     if (humanChoice === "paper" && computerChoice === "rock") {
@@ -30,17 +28,27 @@ function playGame() {
     }
     //return "Invalid input,please try again!";
   }
-  //call playround 5 times using for loop?(add loop in playRound instead?)
-  for (let i = 0; i < 2; i++) {
+
+  for (let i = 0; i < 5; i++) {
     let humanSelection = getHumanChoice();
     let computerSelection = getComputerChoice();
     let result = playRound(humanSelection, computerSelection);
+    totalHumanScore = totalHumanScore + humanScore;
+    totalComputerScore = totalComputerScore + computerScore;
     console.log(result);
+    console.log(humanScore, computerScore);
+    //console.log(totalHumanScore, totalComputerScore);
+  }
+  if (totalHumanScore > totalComputerScore) {
+    return `You Win! The final score is ${totalHumanScore} - ${totalComputerScore}`;
+  } else if (totalComputerScore > totalHumanScore) {
+    return `You lost to AI! The final score is ${totalHumanScore} - ${totalComputerScore} `;
+  } else if (totalHumanScore === totalComputerScore) {
+    return `No one wins its a DRAW! ${totalHumanScore} - ${totalComputerScore}`;
   }
 }
 
 function getHumanChoice() {
-  //arry?
   let humanChoice = prompt("Rock Paper or Scissor?");
   let humanResult = humanChoice.toLowerCase();
   switch (humanResult) {
@@ -58,7 +66,6 @@ function getHumanChoice() {
       return "invalid choice";
   }
 }
-//console.log(getHumanChoice());
 
 function getComputerChoice() {
   let randomCpuChoice = ["rock", "paper", "scissor"];
@@ -78,4 +85,4 @@ function getComputerChoice() {
 }
 //console.log(getComputerChoice());
 //console.log(playRound(getHumanChoice(), getComputerChoice()));
-playGame();
+console.log(playGame());

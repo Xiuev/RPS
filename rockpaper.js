@@ -8,29 +8,37 @@ rockButton.addEventListener("click", () => {
   let result = playRound("rock", getComputerChoice());
   console.log(result);
 });
+paperButton.addEventListener("click", () => {
+  let result = playRound("paper", getComputerChoice());
+  console.log(result);
+});
+scissorBtn.addEventListener("click", () => {
+  let result = playRound("scissor", getComputerChoice());
+  console.log(result);
+});
 //functions
 
 function playRound(humanChoice, computerChoice) {
-  let humanScore = 0;
-  let computerScore = 0;
+  let humanScore = document.querySelector("#hmn-score");
+  let computerScore = document.querySelector("#cpu-score");
   //DONT FORGET TO INCREASE SCORE OF WINNER
   if (humanChoice === "paper" && computerChoice === "rock") {
-    humanScore += 1;
+    humanScore.innerHTML = parseInt(humanScore.innerHTML) + 1;
     return "You win! Paper beats Rock!";
   } else if (humanChoice === "rock" && computerChoice === "scissor") {
-    humanScore += 1;
+    humanScore.innerHTML = parseInt(humanScore.innerHTML) + 1;
     return "You win! Rock beats Scissors";
   } else if (humanChoice === "scissor" && computerChoice === "paper") {
-    humanScore += 1;
+    humanScore.innerHTML = parseInt(humanScore.innerHTML) + 1;
     return "You win! Scissor beats Paper!";
   } else if (computerChoice === "paper" && humanChoice === "rock") {
-    computerScore += 1;
+    computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
     return "You lose! Paper beats Rock";
   } else if (computerChoice === "rock" && humanChoice === "scissor") {
-    computerScore += 1;
+    computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
     return "You lose! rock beats scissor";
   } else if (computerChoice === "scissor" && humanChoice === "paper") {
-    computerScore += 1;
+    computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
     return "You Lose! scissor beats paper";
   } else if (computerChoice === humanChoice) {
     return "DRAW!";

@@ -24,26 +24,32 @@ function playRound(humanChoice, computerChoice) {
   //DONT FORGET TO INCREASE SCORE OF WINNER
   if (humanChoice === "paper" && computerChoice === "rock") {
     humanScore.innerHTML = parseInt(humanScore.innerHTML) + 1;
-    return "You win! Paper beats Rock!";
   } else if (humanChoice === "rock" && computerChoice === "scissor") {
     humanScore.innerHTML = parseInt(humanScore.innerHTML) + 1;
-    return "You win! Rock beats Scissors";
   } else if (humanChoice === "scissor" && computerChoice === "paper") {
     humanScore.innerHTML = parseInt(humanScore.innerHTML) + 1;
-    return "You win! Scissor beats Paper!";
   } else if (computerChoice === "paper" && humanChoice === "rock") {
     computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
-    return "You lose! Paper beats Rock";
   } else if (computerChoice === "rock" && humanChoice === "scissor") {
     computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
-    return "You lose! rock beats scissor";
   } else if (computerChoice === "scissor" && humanChoice === "paper") {
     computerScore.innerHTML = parseInt(computerScore.innerHTML) + 1;
-    return "You Lose! scissor beats paper";
   } else if (computerChoice === humanChoice) {
-    return "DRAW!";
   }
-  //return "Invalid input,please try again!";
+  //total score/game winner;
+  if (
+    parseInt(humanScore.innerHTML) === 5 &&
+    parseInt(computerScore.innerHTML) < 5
+  ) {
+    let gameWinner = prompt("Congratulations YOU won the game!");
+    return gameWinner;
+  } else if (
+    parseInt(computerScore.innerHTML) === 5 &&
+    parseInt(humanScore.innerHTML) < 5
+  ) {
+    let gameWinner = prompt("You lose Computer won the game!");
+    return gameWinner;
+  }
 }
 function playGame() {
   let totalHumanScore = 0;
